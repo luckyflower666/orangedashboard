@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Login</title>
+	<meta charset = 'utf8'>
+</head>
+<body>
+ <div id="form">
+	<%= form_for(:user,:url=>"/restaurant/checkLogin") do |f| %>
+  <table height="150" border="0">
+  <tr>
+		  <div class="field">
+    		<td><%= f.label :restaurant %></td><br>
+    		<td><%= f.text_field :restaurant %></td>
+  		</div>
+  </tr>
+  <tr>
+  		<div class="field">
+    		<td><%= f.label :password %></td><br>
+    		<td><%= f.text_field :password %></td>
+  		</div>
+  </tr>
+  <tr>
+  		<div class="actions">
+    		<td ><%= f.submit :submit %></td>
+        <td><%=link_to 'return',"/restaurant/home.html", data: { turbolinks: 'false'}%></td>
+  		</div>
+  </tr>
+	<% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>certified_restaurant</title>
+<style type="text/css">
+.r_title {
+	text-align: center;
+}
+</style>
+</head>
+
+<body data-turbolink="false">
+<div class=r_title>
+  <img src="/assets/r_title.jpg" width="850" height="150" />
+</div>
+
+<div>
+		<% if @user==nil %>
+			<%=link_to 'Sign up',:controller=>'users',:action=>'new' %>
+			<%=link_to 'Login',:controller=>'restaurant',:action=>'login' %>
+		<% else %>
+			<p>Welcome restaurant:</p>
+			<%=link_to @user, :controller=>'restaurant',:action=>'show'  %>
+			<%=link_to 'Logout', "/restaurant/logout", data: { turbolinks: 'false'}  %>
+		<% end %>
+</div>	
+
+
+<%= render :template => 'menus/index' , menu: @menus %>
+
+<%= render :template => 'restaurant/leafletjs'  %>
+<!--<a href="/sessions/new"><input type="button" value="log in"></input></a>
+<a href="/applicants/new"><input type="button" value="sign up"></input></a>
+-->
+
+
+<div id="footer">
+  <a id="return" href="/dashboard/index.html">return</a> 
+  <p>Copyright 2016 Orange Beijing Lab All Right Reserved</p>
+ 
+</div>
+
+</body>
+</html>

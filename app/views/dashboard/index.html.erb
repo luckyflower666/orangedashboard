@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+<style type="text/css">
+#div1 {
+	background-color: #3FF;
+	/* [disabled]opacity: 0.5; */
+	width: 50%;
+	height: 400px;
+	position: absolut;
+	float: left;
+	text-align: center;
+	line-height: 400px;
+	font-size: 36px;
+	background-size:cover; 
+	background-image: url(/assets/gouvernment.jpg);
+	color: #FFF;
+}
+#div2 {
+	height: 400px;
+	width: 50%;
+	float: right;
+	position: absolut;
+	text-align: center;
+	line-height: 400px;
+	font-size: 36px;
+	background-image: url(/assets/orange.jpg);
+	background-size:cover; 
+	color: #FFF;
+}
+#div3 {
+	height: 400px;
+	width: 100%;
+	float: right;
+	position: absolut;
+	text-align: center;
+	line-height: 400px;
+	font-size: 36px;
+	background-image: url(/assets/menu.jpg);
+	background-size:cover; 
+	color: #FFF;
+}
+#footer {
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+<div id=div1>
+	<%= link_to 'Government dashboard', "/dashboard/gov.html", data: { turbolinks: 'false'} %>
+</div>
+
+<div id=div2>
+	<%= link_to 'Orange dashboard', "/dashboard/orange.html", data: { turbolinks: 'false'} %>
+</div>
+
+<div id=div3>
+	<%= link_to 'Menus dashboard', "/restaurant/home.html", data: { turbolinks: 'false'} %>
+</div>
+
+<div id="footer">
+  <a id="return" href="/dashboard/index.html">return</a> 
+  <p>Copyright 2016 Orange Beijing Lab All Right Reserved</p>
+ 
+</div>
+
+</body>
+</html>

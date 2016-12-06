@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<center>
+<h1>Menus collection</h1>
+
+<table id="table_menu" width="849" height="184" border="5" >
+
+  <thead>
+    <tr id="td1">
+      <th>Admin</th>
+      <th>Menu Name</th>
+      <th>Menu Type</th>
+      <th>Restaurant</th>
+      <th>Serve Time</th>
+      <th>Price/RMB</th>
+      <th>Discount/RMB</th>
+      <th>Sold</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.user.name %></td>
+        <td><%= menu.name %></td>
+        <td><%= menu.mtype %></td>
+        <td><%= menu.restaurant %></td>
+        <td><%= menu.time %></td>
+        <td><%= menu.price %></td>
+        <td><%= menu.discount %></td>
+        <td><%= menu.sold %></td>
+        <td><%= image_tag(menu.image_url(:large)) %></td>
+        <td id="td1"><%= link_to 'Show', menu %></td>
+        <td id="td1"><%= link_to 'Edit', edit_menu_path(menu) %></td>
+        <td id="td1"><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<center>
+<%= link_to 'New Menu', new_menu_path %>

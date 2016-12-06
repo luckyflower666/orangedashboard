@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+<table id="table_menu" width="811" height="184" border="5">
+   <tr>
+    <td>
+      <p>
+        <strong>Admin:</strong>
+        <%= @menu.user.name %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Name of dish:</strong>
+        <%= @menu.name %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Type of dish:</strong>
+        <%= @menu.mtype %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Restaurant:</strong>
+        <%= @menu.restaurant %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Time:</strong>
+        <%= @menu.time %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Price:</strong>
+        <%= @menu.price %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Discount:</strong>
+        <%= @menu.discount %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Sold:</strong>
+        <%= @menu.sold %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <!--<strong>Imgage:</strong>-->
+        <%= image_tag(@menu.image_url(:large)) if @menu.image %>
+      </p>
+    </td>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<!--<%= link_to 'Back', menus_path %>-->
+<%= link_to 'Back', "/restaurant/home.html", data: { turbolinks: 'false'}  %>
+

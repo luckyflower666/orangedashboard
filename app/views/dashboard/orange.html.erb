@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>orange_center</title>
+<script type="text/javascript" src="/assets/distribute.js"></script>
+<style type="text/css">
+.o_title {
+	text-align: center;
+}
+#ico {
+	/* [disabled]position: absolute; */
+	text-align: center;
+	/* [disabled]left: 100px; */
+	width: 811px;
+}
+#fund {
+	text-align: center;
+}
+#fund_title {
+	font-size: 24px;
+	font-weight: bold;
+}
+.user_title {
+	font-size: 24px;
+	font-weight: bold;
+}
+#o_pay {
+}
+#footer {
+	text-align: center;
+}
+#return {
+}
+.t_g {
+	color: #3F0;
+	font-weight: bold;
+	font-size: 24px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+#t_o {
+	color: #3F0;
+	font-size: 24px;
+	font-weight: bold;
+	font-family: Verdana, Geneva, sans-serif;
+}
+#coef {
+	font-size: 24px;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class=o_title>
+  <img src="/assets/o_title.png" width="811" height="139" />  
+</div>
+<div align="center">
+  <div id=ico>
+  <a href="#t_g"><img src="/assets/ic_gc.jpg" width="99" height="99" /></a><a href="#o_pay"><img src="/assets/ic_op.jpg" width="99" height="99" /><img src="/assets/ic_right.jpg" width="613" height="99" /></a></div>
+</div>
+
+<div>
+<p align="center" class="t_g">Green Credit System</p>
+<div  align="center">
+<table width="200" border="0">
+  <tr>
+    <th scope="col">Shanghai citizens monthly energy consumption</th>
+    <th scope="col">Distribution of energy consumption for daily life</th>
+  </tr>
+  <tr>
+  	<td><form align="center" id="form5" name="form5" method="post" action="">
+  	  <label for="consumption3"></label>
+  	  <select name="consumption3" id="consumption3" onchange="shift_conspt()">
+  	    <option value="1">Electricity</option>
+  	    <option value="2">Gas</option>
+  	    <option value="3">Water</option>
+	    </select>
+  	  <img id="img_consumption" src ="/assets/electricity.jpg" width="366" height="289" />
+  	</form></td>
+    <td><img src="/assets/consumption2.jpg" width="366" height="256" /></td>
+  </tr>
+</table>
+</div>
+<div id=fund>
+  <table align="center" width="811" border="1">
+  <caption id="fund_title">
+    Funds Resources
+  </caption>
+  <tr>
+    <th width="163" bgcolor="#00FF00" scope="col">Date</th>
+    <th width="256" bgcolor="#00FF00" scope="col">Sponsor</th>
+    <th width="159" bgcolor="#00FF00" scope="col">Amount RMB</th>
+    <th width="159" bgcolor="#00FF00" scope="col">Consumed presentage</th>
+    <th width="205" bgcolor="#00FF00" scope="col">Allocation</th>
+  </tr>
+  <tr>
+    <td>2016 July</td>
+    <td>government </td>
+    <td><span id="a_govern">1000</span></td>
+    <td><span id="p_govern">0</span></td>
+    <td><form id="form1" name="form1" method="post" action="">
+      <input type="button" value="distribute" id="button1"onclick="distribute1()" />
+    </form></td>
+  </tr>
+  <tr>
+    <td>2016 July</td>
+    <td>charity</td>
+    <td><span id="a_charity">2000</span></td>
+    <td><span id="p_charity">0</span></td>
+    <td><form id="form2" name="form2" method="post" action="">
+     <input type="button" value="distribute" id="button2"onclick="distribute2()" />
+    </form></td>
+  </tr>
+  <tr>
+    <td>2016 June</td>
+    <td>electricity&amp;gas service</td>
+    <td><span id="a_egas">1500</span></td>
+    <td><span id="p_egas">0</span></td>
+    <td><form id="form3" name="form3" method="post" action="">
+      <input type="button" value="distribute" id="button3"onclick="distribute3()" />
+    </form></td>
+  </tr>
+    <tr>
+    <td>2016 May</td>
+    <td>water service</td>
+    <td><span id="a_water">3000</span></td>
+    <td><span id="p_water">0</span></td>
+    <td><form id="form4" name="form4" method="post" action="">
+      <input type="button" value="distribute" id="button4"onclick="distribute4()" />
+    </form></td>
+  </tr>
+</table>
+</div>
+
+<div>
+<table align="center" width="812" border="1">
+  <caption class="user_title">
+   Utilities Service User Information
+  </caption>
+  <tr>
+    <th width="99" bgcolor="#00FF00" scope="col">Date</th>
+    <th width="132" bgcolor="#00FF00" scope="col">Name</th>
+    <th width="254" bgcolor="#00FF00" scope="col">Monthly saving energy/ % lower than average</th>
+    <th width="140" bgcolor="#00FF00" scope="col">Green credit</th>
+    <th width="153" bgcolor="#00FF00" scope="col">Price RMB</th>
+  </tr>
+  <tr>
+    <td>2016 July</td>
+    <td> Mr.Zhang</td>
+    <td>10%</td>
+    <td>50</td>
+    <td>0.5</td>
+  </tr>
+  <tr>
+    <td>2016 June</td>
+    <td>Ms.Li</td>
+    <td>20%</td>
+    <td><span id="credit1">100</span></td>
+    <td> <span id="pending1">Pending</span></td>
+  </tr>
+  <tr>
+    <td>2016 May</td>
+    <td>Mrs.Zhao</td>
+    <td>30%</td>
+    <td><span id="credit2">150</span></td>
+    <td> <span id="pending2">Pending</span></td>
+  </tr>
+  <tr>
+    <td>2016 May</td>
+    <td>Miss.Sun</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>2016 April</td>
+    <td>Miss.Lin</td>
+    <td>50%</td>
+    <td><span id="credit3">250</span></td>
+    <td> <span id="pending3">Pending</span></td>
+  </tr>  
+</table>
+</div>
+
+<div>
+<table align="center" width="813" border="1">
+  <caption id="coef">
+    Coefficient Adjustment
+  </caption>
+  <tr>
+    <th width="147" bgcolor="#00FF00" scope="col">Year</th>
+    <th width="423" bgcolor="#00FF00" scope="col">Previous Year Consumed energy/Provided energy</th>
+    <th width="221" bgcolor="#00FF00" scope="col">Green credit/Price</th>
+   
+  </tr>
+  <tr>
+    <td>2014</td>
+    <td>25%</td>
+    <td>200</td>
+  </tr>
+  <tr>
+    <td>2015</td>
+    <td>50%</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>2016</td>
+    <td>50%</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>2017</td>
+    <td>Pending</td>
+    <td><form id="form6" name="form6" method="post" action="">
+      <label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" />
+    </form></td>
+  </tr>
+</table>
+</div>
+</div>
+
+
+
+
+<div id=o_pay>
+<p align="center" class="t_o"><span id="t_o">Orange Pay and Meal Program System</span></p>
+  <div  align="center"></div>
+  
+  <div><table align="center" width="811" border="1">
+  <tr>
+    <td width="396"><img src="/assets/senior.jpg" width="366" height="289" /></td>
+    <td width="399"><img src="/assets/checking.jpg" width="366" height="256" /></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/perference.png" width="400" height="289"/></td>
+    <td><img src="/assets/mealratio.png" width="400" height="289" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+  </div>
+<div>
+    <table align="center" width="812" border="1">
+      <caption>
+      Accounts of Orange Bank Card
+      </caption>
+      <tr>
+        <th width="418" scope="col">Account name</th>
+        <th width="378" scope="col">Function</th>
+        <th width="378" scope="col">Registered Number</th>
+      </tr>
+      <tr>
+        <td>Checking account</td>
+        <td>Everybody can open this account, and use it for payment</td>
+        <td>21400</td>
+      </tr>
+      <tr>
+        <td>Senior account</td>
+        <td>Elder that have more than 60 years old are egible to ues it for the payment of meal</td>
+        <td>50000</td>
+      </tr>
+  </table>
+    
+  </div>
+</div>
+<div>
+<table align="center" width="813" border="1">
+  <caption>
+    Meal Allowance
+  </caption>
+  <tr>
+    <th width="193" scope="row">Age</th>
+    <td width="209">60-75</td>
+    <td width="196">76-90</td>
+    <td width="187">91-105</td>
+  </tr>
+  <tr>
+    <th scope="row">Allowance/month</th>
+    <td>120 RMB</td>
+    <td> 300 RMB</td>
+    <td>500 RMB</td>
+  </tr>
+</table>
+
+</div>
+
+
+<div>
+  
+  <table align="center" width="814" border="1">
+  <caption>
+     Certified Restaurant Information
+  </caption>
+  <tr>
+    <th width="249" scope="col">Name</th>
+    <th width="122" scope="col">Order Number</th>
+    <th width="200" scope="col">Senior Payment Amount</th>
+    <th width="215" scope="col">Rank</th>
+  </tr>
+  <tr>
+    <td>Ginkgo small canteen</td>
+    <td>1000</td>
+    <td>6000 RMB</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Canteen of elder community</td>
+    <td>500</td>
+    <td>3000 RMB</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Sunshine restaurant</td>
+    <td>300</td>
+    <td>1800 RMB</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Pudong canteen</td>
+    <td>150</td>
+    <td>900 RMB</td>
+    <td>4</td>
+  </tr>
+</table>
+<details align="center">
+<summary>more
+</summary>
+<table align="center" width="813" border="1">
+  <tr align="left">
+    <td width="249">Dongsheng seafood</th>
+    <td width="122">100</th>
+    <td width="200">600 RMB</th>
+    <td width="215">5</th>
+  </tr>
+  <tr align="left">
+    <td>Mr. Lin hot pot</td>
+    <td>80</td>
+    <td>480 RMB</td>
+    <td>6</td>
+  </tr>
+  <tr align="left">
+    <td>Huangpu Snacks</td>
+    <td>60</td>
+    <td>360 RMB</td>
+    <td>7</td>
+  </tr>
+  <tr align="left">
+    <td>Elder food express</td>
+    <td>50</td>
+    <td>300 RMB</td>
+    <td>8</td>
+  </tr>
+  <tr align="left">
+    <td>Haha restaurant</td>
+    <td>30</td>
+    <td>180 RMB</td>
+    <td>9</td>
+  </tr>
+   <tr align="left">
+    <td>Shanghai Barbecue</td>
+    <td>20</td>
+    <td>120 RMB</td>
+    <td>10</td>
+  </tr>
+</table>
+
+</details>
+</div>
+
+<div id="footer">
+  <a id="return" href="/dashboard/index.html">return</a> 
+  <p>Copyright 2016 Orange Beijing Lab All Right Reserved</p>
+ 
+</div>
+<script type="text/javascript" src="/assets/consumption.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<%= form_for(menu) do |f| %>
+  <% if menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="form">
+      <table width="537" height="370" border="0">
+      <tr>
+       
+        <div class="field">
+          <td><%= f.label :Admin_ID_generate_by_the_system_please_do_not_change %></td>
+          <td><%= f.text_field :user_id, value: @userid   %></td>
+        </div>
+       
+      </tr>
+      <tr>
+       
+          <div class="field">
+            <td><%= f.label :restaurant %></td>
+            <td><%= f.text_field :restaurant, value: @user %></td>
+          </div>
+       
+      </tr>
+      <tr>
+       
+          <div class="field">
+            <td><%= f.label :name_of_dish %></td>
+            <td><%= f.text_field :name %></td>
+          </div>
+
+      </tr>
+      <tr>
+       
+          <div class="field">
+            <td><%= f.label :type_of_dish %></td>
+            <td><%= f.text_field :mtype %></td>
+          </div>
+
+      </tr>
+      <tr>
+       
+          <div class="field">
+            <td><%= f.label :serve_time %></td>
+            <td><%= f.text_field :time %></td>
+          </div>
+
+      </tr>
+      <tr>
+
+        <div class="field">
+          <td><%= f.label :price %></td>
+          <td><%= f.text_field :price %></td>
+        </div>
+
+      </tr>
+      <tr>
+
+        <div class="field">
+          <td><%= f.label :discount %></td>
+          <td><%= f.text_field :discount %></td>
+        </div>
+
+      </tr>
+      <tr>
+
+        <div class="field">
+          <td><%= f.label :sold %></td>
+          <td><%= f.number_field :sold %></td>
+        </div>
+
+      </tr>
+      <tr>
+        <div class="field">
+        <p>
+          <td><%= f.label :image %></td>
+          <td><%= f.file_field :image %></td>
+        </p>
+        </div>
+    </tr>
+      <tr>
+
+        <div class="actions">
+          <td><%= f.submit %></td>
+        </div>
+      </tr>
+</div>
+<% end %>

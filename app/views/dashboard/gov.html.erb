@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>government_center</title>
+
+<script type="text/javascript" src="/assets/min.js"></script>
+
+<style type="text/css">
+.g_title {
+  text-align: center;
+}
+#date {
+  font-family: Verdana, Geneva, sans-serif;
+  color: #39F;
+  text-align: center;
+}
+#real {
+  text-align: center;
+}
+#annual_data {
+  text-align: center;
+  width: 100%;
+}
+#weather {
+  text-align: center;
+  /* [disabled]width: 811px; */
+}
+#qr_write {
+  font-style: italic;
+  color: #0CF;
+}
+#annual_data table tr td table caption strong {
+  font-size: 24px;
+}
+#daily_data table tr td table caption strong {
+  font-size: 24px;
+}
+#footer {
+  text-align: center;
+}
+#return {
+  /* [disabled]text-align: right; */
+  width: 80px;
+  /* [disabled]float: right; */
+  font-size: 18px;
+  font-weight: bold;
+}
+#real table caption {
+  font-weight: bold;
+  font-size: 24px;
+  color: #000;
+}
+#real table tr td {
+  font-weight: bold;
+  text-align: center;
+}
+</style>
+
+
+ <style type="text/css">
+
+  #time {
+  color: #09F;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+ </style>
+         
+    <script src="http://webapi.amap.com/maps?v=1.3&key=bea67bfb845f298f50ac0f0814f862e3"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/heatmapData.js"></script>
+    
+</head>
+
+<body onload="change(); realcall();">
+
+<div class=g_title>
+  <img src="/assets/g_title.jpg" width="811" height="139" />
+  
+
+</div>
+
+<div id="time">    
+<script>     
+document.getElementById('time').innerHTML=new Date().toLocaleString();     
+setInterval("document.getElementById('time').innerHTML=new Date().toLocaleString();",1000);  
+</script>  
+</div>   
+
+
+<div id=weather>
+  <iframe src="http://www.thinkpage.cn/weather/weather.aspx?uid=U470AD4A08&cid=CHSH000000&l=en&p=SMART&a=0&u=C&s=3&m=2&x=1&d=5&fc=&bgc=&bc=&ti=1&in=0&li=" frameborder="0" scrolling="no" width="500" height="150" allowtransparency="true"></iframe>  
+</div>
+
+<div id=real>
+<table align="center" width="811" border="1">
+  <caption>
+    Real time information
+  </caption>
+  <tr>
+    <th width="400" bgcolor="#9AD7F1">Air quality index</th>
+    <th width="395" bgcolor="#9AD7F1">Real Time Traffic</th>
+  </tr>
+  <tr>
+    <th>
+    
+    <!-- <img id="imgair" width="492" height="214"/>-->
+    <div  id='map'  style='height:280px; width:400px' />  
+
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZOofq_XA2a5lpTQV4m5hTipSrHCGAILc"></script>  
+
+<script>  
+      var  map  =  new  google.maps.Map(document.getElementById('map'),  {  
+                  center:  new  google.maps.LatLng(31.267401,  121.522179),  
+                  mapTypeId:  google.maps.MapTypeId.ROADMAP,  
+                  zoom:  11  
+              });  
+  
+                              var  t  =  new  Date().getTime();  
+      var  waqiMapOverlay  =  new  google.maps.ImageMapType({  
+                  getTileUrl:  function(coord,  zoom)  {  
+                            return  'http://tiles.aqicn.org/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=_TOKEN_ID_";  
+                  },  
+                  name:  "Air  Quality",  
+        });  
+  
+      map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
+    
+</script>
+    
+    </th>
+    <th><img id="imgtraffic" width="395" height="280" /></th>
+  </tr>
+</table>
+
+<table align="center" width="811" border="1">
+  <tr>
+    <td bgcolor="#9AD7F1" width="811">City Heat Map</td>
+  </tr>
+  <tr>
+    <td><div id="container"></div>
+<div class="button-group">
+    <input type="button" class="button" value="Show heat map" onclick="heatmap.show()"/>
+    <input type="button" class="button" value="Close heat map" onclick="heatmap.hide()"/>
+</div>
+<script>
+
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: [116.418261, 39.921984],
+        zoom: 11
+    });
+    if (!isSupportCanvas()) {
+        alert('热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~')
+    }
+    //详细的参数,可以查看heatmap.js的文档 http://www.patrick-wied.at/static/heatmapjs/docs.html
+    //参数说明如下:
+    /* visible 热力图是否显示,默认为true
+     * opacity 热力图的透明度,分别对应heatmap.js的minOpacity和maxOpacity
+     * radius 势力图的每个点的半径大小   
+     * gradient  {JSON} 热力图的渐变区间 . gradient如下所示
+     *  {
+     .2:'rgb(0, 255, 255)',
+     .5:'rgb(0, 110, 255)',
+     .8:'rgb(100, 0, 255)'
+     }
+     其中 key 表示插值的位置, 0-1 
+     value 为颜色值 
+     */
+    var heatmap;
+    map.plugin(["AMap.Heatmap"], function() {
+        //初始化heatmap对象
+        heatmap = new AMap.Heatmap(map, {
+            radius: 25, //给定半径
+            opacity: [0, 0.8]
+            /*,gradient:{
+             0.5: 'blue',
+             0.65: 'rgb(117,211,248)',
+             0.7: 'rgb(0, 255, 0)',
+             0.9: '#ffea00',
+             1.0: 'red'
+             }*/
+        });
+        //设置数据集：该数据为北京部分“公园”数据
+        heatmap.setDataSet({
+            data: heatmapData,
+            max: 100
+        });
+    });
+    //判断浏览区是否支持canvas
+    function isSupportCanvas() {
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    }
+
+</script>
+        
+    </td>
+  </tr>
+</table>
+
+
+<table align="center" width="811" border="1">
+  <tr>
+    <th width="492" bgcolor="#9AD7F1">Real-time Hotline Calls
+</th>
+    <th width="291" bgcolor="#9AD7F1">Real Time Information</th>
+  </tr>
+   <tr>
+    <th scope="col"><img id="imgcall" src ="/assets/hotline8.png" width="492" height="229" /></th>
+    <th scope="col"><marquee direction="up" align="center">
+<dl>
+<dt><b>08:10:56</b>
+<dd style="color:blue">Receiving call from 13526548986</dd>
+</dt>
+<dt><b>09:26:25</b>
+<dd style="color:red">Car moving slow at Zhongshan North Road</dd>
+<dt><b>09:30:35</b>
+<dd style="color:blue">Satisfaction rate:Good from order 201607120566</dd>
+</dt>
+<dt><b>10:10:35</b>
+<dd style="color:blue">Order received from Mr.Zhang</dd>
+</dt>
+<dt><b>11:16:35</b>
+<dd style="color:green">No traffic jam around Shanghai Pudong International Airport</dd>
+</dt>
+</dl>
+</marquee> </th>
+  </tr>
+</table>
+
+<table align="center" width="811" height="74" border="1">
+  <caption>
+    Working stack
+  </caption>
+  <tr>
+    <td width="257">Waiting call : <span id="num_call">5</span></td>
+    <td width="251">Pending order: <span id="num_order">10</span></td>
+    <td width="276">Average processing time: 35 h 21 m 36 s</td>
+  </tr>
+  <tr>
+    <td><form id="form1" name="form1" method="post" action="">
+      <p><!--  <input type="button" value="take call" onclick="min_call()" /> -->
+        <img src="/assets/call.png" width="31" height="31" /></p>
+      <p>Consulted by call: 
+        11638</p>
+    </form></td>
+    <td><form id="form2" name="form2" method="post" action="">
+     <p><img src="/assets/web.png" width="31" height="31" /></p>
+      <p>Consulted by online form: 
+      1550 </p>
+    </form></td>
+    <td>
+     <p><img src="/assets/app.png" width="23" height="29" /></p>
+     <p>Consulted by vocal message: 
+       1560</p></td>
+  </tr>
+</table>
+</div>
+
+<div id="daily_data">
+<table width="811" height="1249" border="0"  align="center">
+  <tr>
+    <td width="811" height="497" bgcolor="#FFFFFF"><table width="811" height="341" border="1"  align="center" top="0">
+      <caption>
+      <strong>Daily data</strong>
+      <p>data of yesterday</p>
+<!--<div id="date">    
+  <script>
+   var today = new Date(); 
+   var date = today.getDate()-1;
+   var month = today.getMonth()+1 ;
+   var year = today.getFullYear();
+   document.write(year+"-"+month+"-"+date+"<br />");
+  </script> 
+</div> -->
+      </caption>
+      <tr>
+        <th width="405" height="28" bgcolor="#9AD7F1" scope="col">Appeal classification</th>
+        <th width="405" bgcolor="#9AD7F1" scope="col">Request type</th>
+      </tr>
+      <tr>
+        <td height="305"><img src="/assets/daily1.png" width="349" height="247" align="center" /></td>
+        <td> <img src="/assets/dailyrequest.png" width="344" height="255" align="center" /></td>
+      </tr>
+    </table>
+    
+      <table width="811" height="312" border="1">
+        <tr>
+          <td width="397" height="28" bgcolor="#9AD7F1" scope="col">Government service request contents</td>
+          <td bgcolor="#9AD7F1" width="397">Personal information subscription contents</td>
+          </tr>
+        <tr>
+          <td height="272"><img src="/assets/daily_g.png" width=365 height="228" /></td>
+          <td><img src="/assets/daily_p.png" alt="" width="374" height="238" /></td>
+          </tr>
+      </table>
+       <table width="811" height="315" border="1">
+        <tr>
+          <td width="397" height="28" bgcolor="#9AD7F1">Public transportation</td>
+          <td bgcolor="#9AD7F1" width="397">Community and Neighborhood</td>
+          </tr>
+        <tr>
+          <td height="272"><img src="/assets/daily_pub.png" width="389" height="238"/></td>
+          <td><img src="/assets/daily_com.png" width="372" height="239" /></td>
+          </tr>
+      </table>
+       <table width="810" height="118" border="1">
+         <caption>
+          Average satification rate:
+          </caption>
+        <tr>
+          <th width="255" height="71" scope="col"><img src="/assets/70.png" width="67" height="66" /></th>
+          <th width="257" scope="col"><img src="/assets/20.png" width="67" height="67" /></th>
+          <th width="273" scope="col"><img src="/assets/10.png" width="68" height="65" /></th>
+        </tr>
+        <tr>
+          <td>70%</td>
+          <td>20%</td>
+          <td>10%</td>
+        </tr>
+</table></td>
+  </tr>
+  </table>
+</div>
+
+<div id="annual_data">
+  <table  align="center" width="507" border="0">
+  <tr>
+    <td height="358" bgcolor="#FFFFFF"><table width="811" height="354" border="1"  align="center">
+      <caption>
+        <strong>Annual data </strong>
+        <p>data of last year</p>
+ <!--       <div id="date"> 
+
+        <script> 
+         var today = new Date(); 
+         var year = today.getFullYear()-1;
+         document.write(year+"<br />");
+        </script> 
+
+</div> -->
+      </caption>
+      <tr>
+        <th width="253" height="28" bgcolor="#9AD7F1" scope="col">Distribution of 2015 request types</th>
+        <th width="238" bgcolor="#9AD7F1" scope="col">Distribution of 2015 request contents</th>
+      </tr>
+      <tr>
+        <td height="286"><img src="/assets/annual1.png" width="400" height="215" /></td>
+        <td><img src="/assets/annual2.png" width="384" height="239" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  </table>
+</div>
+
+<!-- QR code -->
+<style>
+#qr { width:100px; height: 100px;  position:fixed;left:5%; top:150px; box-shadow: 10px 10px 10px #bbb; text-align:center; z-index:999;}
+</style>
+<div id="qr">
+<img src="/assets/QR.jpg" width="100" height="100" />
+<p id="qr_write"><span style="font-size:22px">scan here</span> to watch the introduction video<p>
+<img src="/assets/mapp.png" width="50" height="100" />
+<a href="http://pan.baidu.com/s/1pKSS3NX">Download mobile application with code <span>lp6k</span></a>
+</div>
+
+<div id="footer">
+  <a id="return" href="/dashboard/index.html">return</a> 
+  <p>Copyright 2016 Orange Beijing Lab All Right Reserved</p>
+ 
+</div>
+
+</body>
+
+</html>

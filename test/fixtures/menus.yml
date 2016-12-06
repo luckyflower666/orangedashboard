@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  restaurant: MyString
+  price: 1.5
+  discount: 1.5
+  sold: 1
+
+two:
+  user: two
+  name: MyString
+  restaurant: MyString
+  price: 1.5
+  discount: 1.5
+  sold: 1

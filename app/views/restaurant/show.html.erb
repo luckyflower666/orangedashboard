@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<table id="table_menu" width="849" height="184" border="5">
+   <tr>
+    <td>
+      <p>
+        <strong>Admin_ID:</strong>
+        <%= @userid %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Name:</strong>
+        <%= @username %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Restaurant:</strong>
+        <%=  @user %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Email:</strong>
+        <%= @useremail %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Telephone:</strong>
+        <%= @usertele %>
+      </p>
+    </td>
+</table>
+
+<%= link_to 'Back', "/restaurant/home.html", data: { turbolinks: 'false'} %>
+

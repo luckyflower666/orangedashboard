@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>Sign up</title>
+	<meta charset = 'utf8'>
+</head>
+<body>
+
+  <div id="form">
+      <table  height="350" border="0">
+         <tr>
+          <th colspan="2" >New User</th>
+         </tr>
+      	<%= form_for(@user,:url=>"/users/create") do |f| %>
+      		<tr> 
+            <div class="field">
+          		<td><%= f.label :restaurant %></td>
+          		<td><%= f.text_field :restaurant %></td>
+        		</div>
+          </tr>
+          <tr>
+        		<div class="field">
+          		<td><%= f.label :password %></td>
+          		<td><%= f.text_field :password %></td>
+        		</div>
+          </tr>
+          <tr>
+        		<div class="field">
+          		<td><%= f.label :name %></td>
+          		<td><%= f.text_field :name %></td>
+        		</div>
+          </tr>
+          <tr>
+        		<div class="field">
+          		<td><%= f.label :email %></td>
+          		<td><%= f.text_field :email %></td>
+        		</div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :telephone %></td>
+              <td><%= f.text_field :telephone %></td>
+            </div>
+          </tr>
+          <tr>
+        		<div class="actions">
+          		<td><%= f.submit %></td>
+              <td><%=link_to 'return',"/restaurant/home.html", data: { turbolinks: 'false'}%></td>
+        		</div>
+          </tr>
+      	<% end %>
+
+</body>
+</html>
