@@ -7,6 +7,7 @@ class CreateMenus < ActiveRecord::Migration[5.0]
       t.float :price
       t.float :discount
       t.integer :sold
+      t.string :mtype
 
       t.timestamps
     end
